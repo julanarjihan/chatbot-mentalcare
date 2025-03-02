@@ -3,6 +3,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
+const PORT = process.env.PORT || 8080; // Railway otomatis mengatur PORT
+
 app.use(cors()); // Pastikan frontend bisa akses
 app.use(bodyParser.json());
 
@@ -45,4 +47,5 @@ app.post('/api/chat', (req, res) => {
     res.json({ reply: botReply });
 });
 
-app.listen(5000, () => console.log('✅ MentalCare Bot berjalan di http://localhost:5000'));
+// Pastikan server berjalan di PORT yang tersedia di Railway
+app.listen(8080, () => console.log(`✅ MentalCare Bot berjalan di port http://10.250.17.201:8080`));
