@@ -5,7 +5,16 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 8080; // Railway otomatis mengatur PORT
 
-app.use(cors()); // Pastikan frontend bisa akses
+app.use(cors({
+    origin: '*',  // Atau tentukan domain frontend jika sudah online
+    methods: 'GET,POST'
+}));
+
+
+app.use(cors({// Pastikan frontend bisa akses
+origin: 'https://chatbot-mentalcare-production.up.railway.app/',  // Atau tentukan domain frontend jika sudah online
+    methods: 'GET,POST'
+}));
 app.use(bodyParser.json());
 
 app.post('/api/chat', (req, res) => {
